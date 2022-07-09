@@ -16,8 +16,16 @@ a {
     opacity: 0.25;
   }
 }
+
+@mixin mnoselect {
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 i {
-  @extend .noselect;
+  // @extend .noselect;
+  @include mnoselect;
 }
 .expand {
   flex-grow: 1;
@@ -38,6 +46,7 @@ i {
     -webkit-user-select: none;
             user-select: none;
 }
+
 .clickable,
 .cursor-pointer {
   cursor: pointer;
@@ -183,6 +192,13 @@ hr {
   justify-content: center;
   width: 100%;
 }
+
+@mixin mlayout-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn-fab {
   $fab-size:   26px;
 
@@ -196,8 +212,9 @@ hr {
   margin: 0;
   text-align: center;
   box-shadow: none;
-  @extend .noselect;
-  @extend .layout-center;
+  // @extend .noselect;
+  @include mnoselect;
+  @include mlayout-center;
   transition: background 0.15s ease-in-out;
   &:hover, &:focus {
     background: rgba($theme-base, 0.1);
@@ -324,6 +341,24 @@ hr {
   transition: border-color 0.15s ease-in-out;
 }
 
+@mixin mform-control {
+  position: relative;
+  display: flex;
+  height: $input-height;
+  padding: 0 0.75rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  line-height: $input-height;
+  color: $text;
+  background: transparent;
+  border-radius: $input-radius;
+  border: 1px solid $border-color;
+  outline: none;
+  box-shadow: none;
+  width: 100%;
+  transition: border-color 0.15s ease-in-out;
+}
+
 label {
   i {
     margin: 0 ($gutter-h * 0.75);
@@ -333,7 +368,8 @@ label {
 }
 
 input, select, textarea {
-  @extend .form-control;
+  // @extend .form-control;
+  @include mform-control;
   &:focus {
     border-color: $input-highlight;
   }
@@ -667,9 +703,23 @@ input[type=file] {
   padding: 0.5rem;
   justify-content: flex-end;
 }
+
+@mixin mcard-shadow {
+  box-shadow: 0 0 0 1px rgba(black ,0.06),
+              0 1px 3px 0 rgba(black ,0.12),
+              0 2px 1px -1px rgba(black ,0.08);
+  transition: box-shadow 0.28s ease-in-out;
+}
+@mixin mcard-shadow-hover {
+  box-shadow: 0 0 0 1px rgba(black ,0.06),
+              0 1px 2px rgba(black ,0.08),
+              0 6px 15px rgba(black ,0.12);
+}
+
 .card {
   background: lighten($theme-bg, 6%);
-  @extend .card-shadow;
+  // @extend .card-shadow;
+  @include mcard-shadow;
 }
 .card-flat {
   background: rgba($theme-base, 0.04);

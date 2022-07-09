@@ -1,3 +1,10 @@
+@mixin mtruncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
 .sidebar-history {
   position: relative;
   .sidebar-list {
@@ -38,7 +45,8 @@
     .subtitle {
       font-size: 80%;
       color: $text-lighter;
-      @extend .truncate;
+      // @extend .truncate;
+      @include mtruncate;
     }
   }
   .list-item-btn {

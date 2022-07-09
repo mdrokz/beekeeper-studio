@@ -1,3 +1,11 @@
+@mixin mbtn-flat {
+  color: $theme-base;
+  background: rgba($theme-base, 0.06);
+  &:hover, &:focus {
+    background: rgba($theme-base, 0.12);
+  }
+}
+
 .interface.connection-interface {
   padding-top: 0;
 }
@@ -72,7 +80,8 @@
     .save-actions {
       margin-top: $gutter-h;
       .save {
-        @extend .btn-flat;
+        // @extend .btn-flat;
+        @include mbtn-flat;
       }
     }
   }

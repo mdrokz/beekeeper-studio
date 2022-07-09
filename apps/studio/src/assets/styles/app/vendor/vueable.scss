@@ -1,6 +1,10 @@
 
 @import '../extends';
 
+@mixin mdropdown-shadow {
+  box-shadow: 0 1px 4px rgba(black, 0.37)!important;
+}
+
 .dropdown {
   position: relative;
   display: flex;
@@ -21,7 +25,8 @@
     min-width: 200px;
     border-radius: 6px;
     font-size: 0.95rem;
-    @extend .dropdown-shadow;
+    // @extend .dropdown-shadow;
+    @include mdropdown-shadow;
   }
   .dropdown-item {
     display: flex;

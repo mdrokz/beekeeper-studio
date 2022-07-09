@@ -1,6 +1,13 @@
 
 // Connection Sidebar
 // --------------------------------
+
+@mixin mtruncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .connection-sidebar {
   .list-body {
     height: fit-content
@@ -106,7 +113,8 @@
           }
         }
         > span {
-          @extend .truncate;
+          // @extend .truncate;
+          @include mtruncate;
           margin: 0 0.2rem;
         }
       }

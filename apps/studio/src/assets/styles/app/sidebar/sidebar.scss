@@ -1,3 +1,10 @@
+@mixin mtruncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
 #sidebar {
   flex: 0 1 100%;
   max-height: 100%;
@@ -387,7 +394,8 @@
       // padding-bottom: $gutter-h * 0.5;
     }
     .title {
-      @extend .truncate;
+      // @extend .truncate;
+      @include mtruncate;
     }
     .badge {
       display: inline-flex;
@@ -397,7 +405,8 @@
       font-size: 0.8rem;
       margin: 0;
       span {
-        @extend .truncate;
+        // @extend .truncate;
+        @include mtruncate;
       }
     }
     .actions {
